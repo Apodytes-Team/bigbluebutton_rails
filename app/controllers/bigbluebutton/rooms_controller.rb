@@ -2,11 +2,11 @@ require 'bigbluebutton_api'
 
 class Bigbluebutton::RoomsController < ApplicationController
 
-  before_filter :find_room, :except => [:index, :create, :new, :auth, :external, :external_auth]
-  before_filter :find_server, :only => [:external, :external_auth]
+  before_action :find_room, :except => [:index, :create, :new, :auth, :external, :external_auth]
+  before_action :find_server, :only => [:external, :external_auth]
 
   # set headers only in actions that might trigger api calls
-  before_filter :set_request_headers, :only => [:join_mobile, :end, :running, :join, :destroy, :auth, :external_auth]
+  before_action :set_request_headers, :only => [:join_mobile, :end, :running, :join, :destroy, :auth, :external_auth]
 
   respond_to :html, :except => :running
   respond_to :json, :only => [:running, :show, :new, :index, :create, :update]

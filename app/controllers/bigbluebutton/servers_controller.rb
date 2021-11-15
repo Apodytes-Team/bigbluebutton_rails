@@ -2,7 +2,7 @@ class Bigbluebutton::ServersController < ApplicationController
 
   respond_to :html
   respond_to :json, :only => [:index, :show, :new, :create, :update, :destroy, :activity, :rooms]
-  before_filter :find_server, :except => [:index, :new, :create]
+  before_action :find_server, :except => [:index, :new, :create]
 
   def index
     respond_with(@servers = BigbluebuttonServer.all)

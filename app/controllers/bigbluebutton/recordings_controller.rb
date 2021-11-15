@@ -2,8 +2,8 @@ class Bigbluebutton::RecordingsController < ApplicationController
 
   respond_to :html
   respond_to :json, :only => [:index, :show, :update, :destroy, :publish, :unpublish]
-  before_filter :find_recording, :except => [:index]
-  before_filter :check_for_server, :only => [:publish, :unpublish]
+  before_action :find_recording, :except => [:index]
+  before_action :check_for_server, :only => [:publish, :unpublish]
 
   def index
     respond_with(@recordings = BigbluebuttonRecording.all)
